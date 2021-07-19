@@ -142,9 +142,11 @@ namespace eAgenda.WindowsForms
             // 
             // tbTitulo
             // 
+            this.tbTitulo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tbTitulo.Location = new System.Drawing.Point(97, 98);
             this.tbTitulo.Name = "tbTitulo";
-            this.tbTitulo.Size = new System.Drawing.Size(242, 20);
+            this.tbTitulo.Size = new System.Drawing.Size(242, 23);
             this.tbTitulo.TabIndex = 5;
             // 
             // btCadastrar
@@ -212,6 +214,7 @@ namespace eAgenda.WindowsForms
             this.dataGridViewPendentes.ReadOnly = true;
             this.dataGridViewPendentes.RowHeadersVisible = false;
             this.dataGridViewPendentes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewPendentes.ShowCellToolTips = false;
             this.dataGridViewPendentes.Size = new System.Drawing.Size(599, 159);
             this.dataGridViewPendentes.TabIndex = 0;
             // 
@@ -439,9 +442,11 @@ namespace eAgenda.WindowsForms
             // 
             // tbPorcentagem
             // 
+            this.tbPorcentagem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPorcentagem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tbPorcentagem.Location = new System.Drawing.Point(560, 144);
             this.tbPorcentagem.Name = "tbPorcentagem";
-            this.tbPorcentagem.Size = new System.Drawing.Size(84, 20);
+            this.tbPorcentagem.Size = new System.Drawing.Size(84, 23);
             this.tbPorcentagem.TabIndex = 13;
             // 
             // label3
@@ -470,6 +475,7 @@ namespace eAgenda.WindowsForms
             // 
             // dateTimePickerConclusao
             // 
+            this.dateTimePickerConclusao.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerConclusao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerConclusao.Location = new System.Drawing.Point(563, 98);
             this.dateTimePickerConclusao.Name = "dateTimePickerConclusao";

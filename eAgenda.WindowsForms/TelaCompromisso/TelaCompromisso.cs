@@ -78,6 +78,12 @@ namespace eAgenda.WindowsForms
 
         private int SelecionarIdCompromisso(DataGridView tabela)
         {
+            if (dataGridFuturos.SelectedRows.Count == 0 || dataGridPassados.SelectedRows.Count == 0 || dataGridTodos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Nenhum compromisso selecionado!");
+
+                return 0;
+            }
             DataGridViewRow linhaEscolhida = tabela.SelectedRows[0];
 
             object idCompromisso = linhaEscolhida.Cells[0].Value;
@@ -89,6 +95,12 @@ namespace eAgenda.WindowsForms
 
         private int SelecionarIdContato(DataGridView tabela)
         {
+            if (dataGridContatos.SelectedRows.Count == 0 )
+            {
+                MessageBox.Show("Nenhum contato selecionado!");
+
+                return 0;
+            }
             DataGridViewRow linhaEscolhida = tabela.SelectedRows[0];
 
             object idContato = linhaEscolhida.Cells[0].Value;
@@ -127,6 +139,11 @@ namespace eAgenda.WindowsForms
         {
             Compromisso compromisso = InsereCompromisso();
 
+            if(tbNome.Text == "" || tbLocal.Text == "")
+            {
+                MessageBox.Show("Todos os campos devem ser preenchidos!");
+            }
+
             controladorCompromisso.InserirNovo(compromisso);
 
             PreencherTodasTabelasCompromisso();
@@ -138,17 +155,26 @@ namespace eAgenda.WindowsForms
         {
             string assunto = tbNome.Text;
             DateTime data = dateTimeDataCompromisso.Value;
+            TimeSpan horaInicio = ObterHoraInicio();
+            TimeSpan horaFim = ObterHoraFim();
+            
+            string local, link;
+            
+            ObterLocal(out local, out link);
 
-            string horaInicioTxt = mtbHoraInicio.Text;
-            string[] horaInicioArray = horaInicioTxt.Split(':');
-            TimeSpan horaInicio = new TimeSpan(int.Parse(horaInicioArray[0]), int.Parse(horaInicioArray[1]), 0);
+            Contato contato = null;
+            if (cbMarcarContato.Checked)
+                contato = controladorContato.SelecionarPorId(SelecionarIdContato(dataGridContatos));
 
-            string horaFimTxt = mtbHoraFinal.Text;
-            string[] horaFimArray = horaFimTxt.Split(':');
-            TimeSpan horaFim = new TimeSpan(int.Parse(horaFimArray[0]), int.Parse(horaFimArray[1]), 0);
+            Compromisso compromisso = new Compromisso(assunto, local, link, data,
+                horaInicio, horaFim, contato);
+            return compromisso;
+        }
 
-            string local = "";
-            string link = "";
+        private void ObterLocal(out string local, out string link)
+        {
+            local = "";
+            link = "";
             if (rbPresencial.Checked)
             {
                 local = tbLocal.Text;
@@ -159,14 +185,23 @@ namespace eAgenda.WindowsForms
                 link = tbLocal.Text;
                 local = "Remoto";
             }
+        }
 
-            Contato contato = null;
-            if (cbMarcarContato.Checked)
-                contato = controladorContato.SelecionarPorId(SelecionarIdContato(dataGridContatos));
+        private TimeSpan ObterHoraFim()
+        {
+            string horaFimTxt = mtbHoraFinal.Text;
+            string[] horaFimArray = horaFimTxt.Split(':');
+            TimeSpan horaFim = new TimeSpan(int.Parse(horaFimArray[0]), int.Parse(horaFimArray[1]), 0);
+            return horaFim;
+        }
 
-            Compromisso compromisso = new Compromisso(assunto, local, link, data,
-                horaInicio, horaFim, contato);
-            return compromisso;
+        private TimeSpan ObterHoraInicio()
+        {
+            string horaInicioTxt = mtbHoraInicio.Text;
+            string[] horaInicioArray = horaInicioTxt.Split(':');
+            TimeSpan horaInicio = new TimeSpan(int.Parse(horaInicioArray[0]), int.Parse(horaInicioArray[1]), 0);
+
+            return horaInicio;
         }
 
         private void btEditar_Click(object sender, EventArgs e)

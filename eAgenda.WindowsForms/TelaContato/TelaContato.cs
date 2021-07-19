@@ -2,12 +2,6 @@
 using eAgenda.Dominio.ContatoModule;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace eAgenda.WindowsForms
@@ -40,6 +34,8 @@ namespace eAgenda.WindowsForms
         {
             Contato contato = InsereContato();
 
+            ValidarCampos();
+
             controladorContato.InserirNovo(contato);
             
             PreencherTabelaContatos();
@@ -49,6 +45,12 @@ namespace eAgenda.WindowsForms
 
         private int SelecionarId(DataGridView tabela)
         {
+            if (dataGridContatos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Nenhum compromisso selecionado!");
+
+                return 0;
+            }
             DataGridViewRow linhaEscolhida = tabela.SelectedRows[0];
 
             object idContato = linhaEscolhida.Cells[0].Value;
@@ -70,12 +72,22 @@ namespace eAgenda.WindowsForms
         private void btEditar_Click(object sender, EventArgs e)
         {
             Contato contato = InsereContato();
+            
+            ValidarCampos();
 
             controladorContato.Editar(SelecionarId(dataGridContatos), contato);
 
             PreencherTabelaContatos();
 
             LimparCampos();
+        }
+
+        private void ValidarCampos()
+        {
+            if (tbNome.Text == "" || tbEmail.Text == "" || tbTelefone.Text == "" || tbCargo.Text == "" || tbEmpresa.Text == "")
+            {
+                MessageBox.Show("Todos os campos devem ser preenchidos!");
+            }
         }
 
         private Contato InsereContato()

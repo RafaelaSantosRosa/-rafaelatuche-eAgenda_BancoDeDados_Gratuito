@@ -6,10 +6,10 @@ namespace eAgenda.Dominio.TarefaModule
 {
     public class Tarefa : EntidadeBase, IEquatable<Tarefa>
     {
-        
+
 
         //public Tarefa(string titulo, DateTime dataCriacao, DateTime dataConclusao, PrioridadeEnum prioridade, int percentual)
-        //{            
+        //{
         //    Titulo = titulo;
         //    DataCriacao = dataCriacao.Date;
         //    DataConclusao = dataConclusao.Date;

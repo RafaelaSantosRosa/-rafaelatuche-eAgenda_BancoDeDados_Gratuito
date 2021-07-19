@@ -65,23 +65,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TelaCompromisso.cs">
+    <Compile Include="TelaCompromisso\TelaCompromisso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaCompromisso.Designer.cs">
+    <Compile Include="TelaCompromisso\TelaCompromisso.Designer.cs">
       <DependentUpon>TelaCompromisso.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TelaCompromissoLocal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TelaCompromissoLocal.Designer.cs">
-      <DependentUpon>TelaCompromissoLocal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TelaCompromissoRemoto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TelaCompromissoRemoto.Designer.cs">
-      <DependentUpon>TelaCompromissoRemoto.cs</DependentUpon>
     </Compile>
     <Compile Include="TelaContato\TelaContato.cs">
       <SubType>Form</SubType>
@@ -103,20 +91,8 @@
     <Compile Include="TelaTarefa\TelaTarefaGUI.Designer.cs">
       <DependentUpon>TelaTarefaGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaVisualizarContatos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TelaVisualizarContatos.Designer.cs">
-      <DependentUpon>TelaVisualizarContatos.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="TelaCompromisso.resx">
+    <EmbeddedResource Include="TelaCompromisso\TelaCompromisso.resx">
       <DependentUpon>TelaCompromisso.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TelaCompromissoLocal.resx">
-      <DependentUpon>TelaCompromissoLocal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TelaCompromissoRemoto.resx">
-      <DependentUpon>TelaCompromissoRemoto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TelaContato\TelaContato.resx">
       <DependentUpon>TelaContato.cs</DependentUpon>
@@ -135,9 +111,6 @@
     </Compile>
     <EmbeddedResource Include="TelaTarefa\TelaTarefaGUI.resx">
       <DependentUpon>TelaTarefaGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TelaVisualizarContatos.resx">
-      <DependentUpon>TelaVisualizarContatos.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -163,9 +136,7 @@
       <Name>eAgenda.Controladores</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TelaCompromisso\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
