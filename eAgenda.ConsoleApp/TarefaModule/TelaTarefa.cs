@@ -125,6 +125,11 @@ namespace eAgenda.ConsoleApp.TarefaModule
 
             int prioridade = Convert.ToInt32(Console.ReadLine());
 
+            //Console.WriteLine("");
+            //DateTime a = Convert.ToDateTime(Console.ReadLine());
+            //Console.WriteLine("");
+            //int b = Convert.ToInt32(Console.ReadLine());
+
             return new Tarefa(titulo, DateTime.Now.Date, (PrioridadeEnum)prioridade);
         }
 

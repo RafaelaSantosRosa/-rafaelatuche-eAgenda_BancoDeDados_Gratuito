@@ -17,7 +17,6 @@ namespace eAgenda.Controladores.Shared
         static Db()
         {
             banco = ConfigurationManager.AppSettings["bancoparausar"].ToLower().Trim();
-
             connectionString = ConfigurationManager.ConnectionStrings[banco].ConnectionString;
         }
 
